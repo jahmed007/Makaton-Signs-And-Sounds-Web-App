@@ -1,0 +1,242 @@
+/* All Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+/* Voice List Section */
+#voice-list-sect {
+    padding: 2.5rem;
+    background-color: #bc4749;
+}
+#vl-title, #vl-para {
+    color: #ffffff;
+    padding: 0.5rem;
+    text-align: center;
+}
+#vl-title {
+    font-size: 26px;
+    font-weight: 900;
+}
+#vl-title span {
+    padding: 0.25rem;
+    font-size: 10px;
+    text-transform: uppercase;
+    background-color: #f94144;
+}
+#vl-para {
+    width: 25%;
+    margin: 0 auto;
+    font-size: 13px;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+}
+#vl-select {
+    width: 25%;
+    color: #ffffff;
+    border: none;
+    font-size: 13px;
+    background-color: transparent;
+}
+/* Text To Voice Sentence Section */
+#text-to-voice-sentence-sect {
+    padding: 2.5rem;
+    background-color: #1b4332;   
+}
+#ttvs-title {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+}
+#ttvs-title i {
+    margin: 0 10px;
+}
+#text-to-voice-sentence-div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.ttvs-div {
+    width: 10%;
+    margin: 0.5rem;
+    padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+    border-radius: 10px;
+    background-color: #0ead69;
+}
+.ttvs-img {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.ttvs-space {
+    color: #ffffff;
+    font-size: 52px;
+}
+#ttvs-play-btn {
+    margin-right: 10px;
+    padding: 0.25rem 0.5rem;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: #0ead69;
+}
+#ttvs-delete-btn {
+    margin-right: 10px;
+    padding: 0.25rem 0.5rem;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: #bc4749;
+}
+#ttvs-space-btn {
+    margin-left: 10px;
+    padding: 0.25rem 0.5rem;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+}
+/* Text To Voice Section */
+#text-to-voice-sect {
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.ttv-div {
+    width: 10%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: transform .2s;
+    background-color: #bc4749;
+}
+.ttv-div:hover {
+    transform: scale(1.125);
+}
+.ttv-img {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+#ttv-btn-div {
+    padding-bottom: 5px;
+}
+#ttv-btn-div, #ttv-btn-div2 {
+    display: flex;
+    align-items: center;
+}
+.ttv-icon, .ttv-icon2 {
+    padding: 0.2rem;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+}
+.ttv-icon {
+    margin-right: 5px;
+    border-radius: 100px;
+    background-color: #f94144;
+}
+.ttv-btn {
+    width: 85%;
+    padding: 0.25rem 0;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: #f94144;
+}
+.ttv-icon2 {
+    margin-right: 5px;
+    border-radius: 100px;
+    background-color: #0ead69;
+}
+.ttv-btn2 {
+    width: 85%;
+    padding: 0.25rem 0;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: #0ead69;
+}
+
+/* Tablet Devices */
+@media only screen and (max-width: 768px) {
+    .ttvs-div, .ttv-div {
+        width: 20%;
+    }
+    #vl-para {
+        width: 50%;
+    }
+    #vl-title, #ttvs-title, .ttvs-space {
+        font-size: 16px;
+    }
+    #vl-title span {
+        font-size: 8px;
+    }
+    #vl-para, #vl-select, #ttvs-play-btn, #ttvs-delete-btn, #ttvs-space-btn {
+        font-size: 10px;
+    }
+    .ttv-icon, .ttv-icon2, .ttv-btn, .ttv-btn2 {
+        font-size: 9px;
+    }
+}
+
+/* Mobile Devices */
+@media only screen and (max-width: 480px) {
+    .ttvs-div, .ttv-div {
+        width: 25%;
+    }
+    #vl-para {
+        width: 75%;
+    }
+    #vl-title, #ttvs-title, .ttvs-space {
+        font-size: 16px;
+    }
+    #vl-title span {
+        font-size: 8px;
+    }
+    #vl-para, #vl-select, #ttvs-play-btn, #ttvs-delete-btn, #ttvs-space-btn {
+        font-size: 10px;
+    }
+    .ttv-icon, .ttv-icon2, .ttv-btn, .ttv-btn2 {
+        font-size: 9px;
+    }
+}
