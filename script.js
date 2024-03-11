@@ -7,7 +7,7 @@ let textToVoiceSentenceDeleteBtn = document.getElementById('ttvs-delete-btn');
 let textToVoiceSentenceSpaceBtn = document.getElementById('ttvs-space-btn');
 let textToVoice = document.getElementById('text-to-voice-sect');
 
-// Populates Voices From Web Speech API
+// Populates Voices From Google Speech API
 populateVoices();
 if (speechSynthesis !== undefined) {
     speechSynthesis.onvoiceschanged = populateVoices;
@@ -15,47 +15,55 @@ if (speechSynthesis !== undefined) {
 
 function populateVoices() {
     voiceList = speechSynth.getVoices();
-    let selectedIndex = voiceListSelection.selectedIndex < 0 ? 0 : voiceListSelection.selectedIndex;
+    let selectedIndex = 0;
+    let savedVoiceName = localStorage.getItem('voiceNameSelected');
     voiceListSelection.innerHTML = '';
-    voiceList.forEach((voice) => {
+    voiceList.forEach((voice, index) => {
         let voiceListItem = document.createElement('option');
         voiceListItem.textContent = voice.name;
         voiceListItem.setAttribute('data-lang', voice.lang);
         voiceListItem.setAttribute('data-name', voice.name);
         voiceListSelection.appendChild(voiceListItem);
+        if (voice.name === savedVoiceName) {
+            selectedIndex = index;
+        }
     });
     voiceListSelection.selectedIndex = selectedIndex;
+    voiceListSelection.addEventListener('change', function () {
+        let voiceNameSelected = voiceList[voiceListSelection.selectedIndex].name;
+        localStorage.setItem('voiceNameSelected', voiceNameSelected);
+    });
 };
 
 // Array Data Stored Here
 let divCount = 0;
 let divImageData = [
-    'resources/letter-a.png',
-    'resources/letter-b.png',
-    'resources/letter-c.png',
-    'resources/letter-d.png',
-    'resources/letter-e.png',
-    'resources/letter-f.png',
-    'resources/letter-g.png',
-    'resources/letter-h.png',
-    'resources/letter-i.png',
-    'resources/letter-j.png',
-    'resources/letter-k.png',
-    'resources/letter-l.png',
-    'resources/letter-m.png',
-    'resources/letter-n.png',
-    'resources/letter-o.png',
-    'resources/letter-p.png',
-    'resources/letter-q.png',
-    'resources/letter-r.png',
-    'resources/letter-s.png',
-    'resources/letter-t.png',
-    'resources/letter-u.png',
-    'resources/letter-v.png',
-    'resources/letter-w.png',
-    'resources/letter-x.png',
-    'resources/letter-y.png',
-    'resources/letter-z.png',
+    'media/signs/letter-a.png',
+    'media/signs/letter-b.png',
+    'media/signs/letter-c.png',
+    'media/signs/letter-d.png',
+    'media/signs/letter-e.png',
+    'media/signs/letter-f.png',
+    'media/signs/letter-g.png',
+    'media/signs/letter-h.png',
+    'media/signs/letter-i.png',
+    'media/signs/letter-j.png',
+    'media/signs/letter-k.png',
+    'media/signs/letter-l.png',
+    'media/signs/letter-m.png',
+    'media/signs/letter-n.png',
+    'media/signs/letter-o.png',
+    'media/signs/letter-p.png',
+    'media/signs/letter-q.png',
+    'media/signs/letter-r.png',
+    'media/signs/letter-s.png',
+    'media/signs/letter-t.png',
+    'media/signs/letter-u.png',
+    'media/signs/letter-v.png',
+    'media/signs/letter-w.png',
+    'media/signs/letter-x.png',
+    'media/signs/letter-y.png',
+    'media/signs/letter-z.png',
 ];
 let divTextData = [
     'a',
@@ -138,7 +146,7 @@ for (let i = 0; i < divImageData.length; i++) {
 
 // Outputs Speech On Click
 for (let i = 0; i < divTextData.length; i++) {
-    document.getElementById('ttv-btn#' + i).onclick = function() {
+    document.getElementById('ttv-btn#' + i).onclick = function () {
         let textToVoiceOutput = new SpeechSynthesisUtterance();
         let voiceListItemSelected = voiceListSelection.selectedOptions[0].getAttribute('data-name');
         voiceList.forEach((voice) => {
@@ -150,7 +158,7 @@ for (let i = 0; i < divTextData.length; i++) {
     }
 };
 for (let i = 0; i < divTextData.length; i++) {
-    document.getElementById('ttv-icon#' + i).onclick = function() {
+    document.getElementById('ttv-icon#' + i).onclick = function () {
         let textToVoiceOutput = new SpeechSynthesisUtterance();
         let voiceListItemSelected = voiceListSelection.selectedOptions[0].getAttribute('data-name');
         voiceList.forEach((voice) => {
@@ -165,7 +173,7 @@ for (let i = 0; i < divTextData.length; i++) {
 // Adds Speech To Sentence On Click
 for (let i = 0; i < divTextData.length; i++) {
     for (let j = 0; j < divImageData.length; j++) {
-        document.getElementById('ttv-btn2#' + i).onclick = function() {
+        document.getElementById('ttv-btn2#' + i).onclick = function () {
             sentenceTextData.push(divTextData[i]);
             sentenceImageData.push(divImageData[i]);
 
@@ -182,7 +190,7 @@ for (let i = 0; i < divTextData.length; i++) {
 };
 for (let i = 0; i < divTextData.length; i++) {
     for (let j = 0; j < divImageData.length; j++) {
-        document.getElementById('ttv-icon2#' + i).onclick = function() {
+        document.getElementById('ttv-icon2#' + i).onclick = function () {
             sentenceTextData.push(divTextData[i]);
             sentenceImageData.push(divImageData[i]);
 
@@ -199,7 +207,7 @@ for (let i = 0; i < divTextData.length; i++) {
 };
 
 // Outputs Speech In Sentence On Click 
-document.getElementById('ttvs-play-btn').onclick = function() {
+document.getElementById('ttvs-play-btn').onclick = function () {
     let textToVoiceOutput = new SpeechSynthesisUtterance();
     let voiceListItemSelected = voiceListSelection.selectedOptions[0].getAttribute('data-name');
     voiceList.forEach((voice) => {
@@ -211,7 +219,7 @@ document.getElementById('ttvs-play-btn').onclick = function() {
 }
 
 // Adds Space In Sentence On Click
-document.getElementById('ttvs-space-btn').onclick = function() {
+document.getElementById('ttvs-space-btn').onclick = function () {
     sentenceTextData.push(' ');
     let textToVoiceSentenceSpace = document.createElement('p');
     textToVoiceSentenceSpace.className = 'ttvs-space';
@@ -220,7 +228,7 @@ document.getElementById('ttvs-space-btn').onclick = function() {
 }
 
 // Deletes Speech In Sentence On Click 
-document.getElementById('ttvs-delete-btn').onclick = function() {
+document.getElementById('ttvs-delete-btn').onclick = function () {
     sentenceTextData.length = 0;
     document.getElementById('text-to-voice-sentence-div').innerHTML = "";
 }
